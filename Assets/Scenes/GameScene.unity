@@ -815,6 +815,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3bf580056dc9f46afa7639a6f3b724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upKey: 119
+  downKey: 115
+  speed: 10
+  tempPosition: {x: 0, y: 0, z: 0}
+  verticalLimits: {x: -3, y: 5}
 --- !u!65 &1308717715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -907,9 +912,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   tempPosition: {x: 0, y: 0, z: 0}
-  verticalLimits: {x: -4, y: 4}
+  verticalLimits: {x: -3, y: 5}
   ball: {fileID: 465154190}
-  isLeft: 1
+  isLeft: 0
 --- !u!1 &1329418836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1030,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3bf580056dc9f46afa7639a6f3b724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upKey: 273
+  downKey: 274
+  speed: 10
+  tempPosition: {x: 0, y: 0, z: 0}
+  verticalLimits: {x: -3, y: 5}
 --- !u!65 &1572105009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1117,7 +1127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   tempPosition: {x: 0, y: 0, z: 0}
-  verticalLimits: {x: -4, y: 4}
+  verticalLimits: {x: -3, y: 5}
   ball: {fileID: 465154190}
   isLeft: 0
 --- !u!1 &1597110142

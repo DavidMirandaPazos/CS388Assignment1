@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-#if UNTIY_EDITOR
+#if !UNITY_ANDROID
     // Input vars
     public KeyCode upKey;
     public KeyCode downKey;
@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public Vector3 tempPosition;
 
-    public Vector2 verticalLimits = new Vector2(-4.0f,4.0f);
-    public Vector2 horizontalLimits;
+    public Vector2 verticalLimits = new Vector2(-3.0f,5.0f);
 
     // Start is called before the first frame update
     // This should be called Initialize

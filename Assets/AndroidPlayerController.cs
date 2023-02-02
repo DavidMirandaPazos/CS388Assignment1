@@ -10,7 +10,7 @@ public class AndroidPlayerController : MonoBehaviour
     public float speed = 10.0f;
     public Vector3 tempPosition;
 
-    public Vector2 verticalLimits = new Vector2(-4.0f, 4.0f);
+    public Vector2 verticalLimits = new Vector2(-3.0f, 5.0f);
 
     public GameObject ball;
 
@@ -51,7 +51,7 @@ public class AndroidPlayerController : MonoBehaviour
         for (int i = 0; i < Input.touchCount; i++)
         {
             float isDown = Input.touches[i].position.y < Screen.height / 2.0f?-1.0f:1.0f;
-            bool isRight = Input.touches[i].position.x < Screen.width / 2.0f;
+            bool isRight = Input.touches[i].position.x > Screen.width / 2.0f;
 
             if (isLeft && !isRight)
                 tempPosition += isDown * Vector3.up * speed * Time.deltaTime;
