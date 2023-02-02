@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+#if UNTIY_EDITOR
     // Input vars
     public KeyCode upKey;
     public KeyCode downKey;
@@ -43,13 +44,10 @@ public class PlayerController : MonoBehaviour
     {
         // Move upward
         if (Input.GetKey(upKey))
-        {
            tempPosition += Vector3.up * speed * Time.deltaTime;
-        }
         // Move downward
         if (Input.GetKey(downKey))
-        {
             tempPosition -= Vector3.up * speed * Time.deltaTime;
-        }
-    }
+     }
+#endif
 }

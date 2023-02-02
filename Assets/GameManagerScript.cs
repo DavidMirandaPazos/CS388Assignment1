@@ -43,6 +43,6 @@ public class GameManagerScript : MonoBehaviour
 
     void PlayerWon(bool player1)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

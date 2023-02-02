@@ -795,6 +795,7 @@ GameObject:
   - component: {fileID: 1308717716}
   - component: {fileID: 1308717715}
   - component: {fileID: 1308717714}
+  - component: {fileID: 1308717719}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Untagged
@@ -814,12 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3bf580056dc9f46afa7639a6f3b724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upKey: 119
-  downKey: 115
-  speed: 10
-  tempPosition: {x: 0, y: 0, z: 0}
-  verticalLimits: {x: -3, y: 5}
-  horizontalLimits: {x: 0, y: 0}
 --- !u!65 &1308717715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -898,6 +893,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1308717719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308717713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8d59fcfce2c5d4b90d5a20acd1a913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  tempPosition: {x: 0, y: 0, z: 0}
+  verticalLimits: {x: -4, y: 4}
+  ball: {fileID: 465154190}
+  isLeft: 1
 --- !u!1 &1329418836
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1005,7 @@ GameObject:
   - component: {fileID: 1572105010}
   - component: {fileID: 1572105009}
   - component: {fileID: 1572105008}
+  - component: {fileID: 1572105013}
   m_Layer: 6
   m_Name: Player2
   m_TagString: Untagged
@@ -1012,12 +1025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3bf580056dc9f46afa7639a6f3b724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upKey: 115
-  downKey: 119
-  speed: 10
-  tempPosition: {x: 0, y: 0, z: 0}
-  verticalLimits: {x: -3, y: 5}
-  horizontalLimits: {x: 0, y: 0}
 --- !u!65 &1572105009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1096,6 +1103,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572105013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572105007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8d59fcfce2c5d4b90d5a20acd1a913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  tempPosition: {x: 0, y: 0, z: 0}
+  verticalLimits: {x: -4, y: 4}
+  ball: {fileID: 465154190}
+  isLeft: 0
 --- !u!1 &1597110142
 GameObject:
   m_ObjectHideFlags: 0
