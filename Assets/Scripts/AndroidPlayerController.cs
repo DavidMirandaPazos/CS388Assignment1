@@ -20,7 +20,7 @@ public class AndroidPlayerController : MonoBehaviour
     // This should be called Initialize
     void Start()
     {
-        versusMode = PlayerPrefs.GetInt("isVersus");
+        versusMode = PlayerPrefs.GetInt("isVersusMode");
 
         tempPosition = transform.position;
     }
@@ -48,13 +48,32 @@ public class AndroidPlayerController : MonoBehaviour
     {
         for (int i = 0; i < Input.touchCount; i++)
         {
-            float isDown = Input.touches[i].position.y < Screen.height / 2.0f?-1.0f:1.0f;
+            bool isDown = Input.touches[i].position.y < Screen.height / 2.0f;
             bool isRight = Input.touches[i].position.x > Screen.width / 2.0f;
 
-            if (isLeft && !isRight && tempPosition.y < verticalLimits.y && tempPosition.y > verticalLimits.x)
-                tempPosition += isDown * Vector3.up * speed * Time.deltaTime;
-            else if(!isLeft && isRight && versusMode == 1 && tempPosition.y < verticalLimits.y && tempPosition.y > verticalLimits.x)
-                tempPosition += isDown * Vector3.up * speed * Time.deltaTime;
+            // Left player input
+            if (isLeft) //&& !isRight && tempPosition.y < verticalLimits.y && tempPosition.y > verticalLimits.x)
+            {
+                if (!isRight)
+                {
+                    if (isDown && tempPosition.y > verticalLimits.x)
+                        tempPosition -= Vector3.up * speed * Time.deltaTime;
+                    else if (tempPosition.y < verticalLimits.y)
+                        tempPosition += Vector3.up * speed * Time.deltaTime;
+                }
+            }
+            else if (versusMode == 1)
+            {
+                if (isRight)
+                {
+                    if (isDown && tempPosition.y > verticalLimits.x)
+                        tempPosition -= Vector3.up * speed * Time.deltaTime;
+                    else if (tempPosition.y < verticalLimits.y)
+                        tempPosition += Vector3.up * speed * Time.deltaTime;
+                }
+            }
+            else if(versusMode == 0)
+                UpdateAI();
         }
     }
     void UpdateAI()
