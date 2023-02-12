@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        int map = Random.Range(0, 0);
+        int map = Random.Range(0, 2);
 
         if(map == 0)
         {
