@@ -9,10 +9,12 @@ public class BallController : MonoBehaviour
     public GameObject  playerLeft;
     public GameObject  playerRight;
 
-    public float speed = 10.0f;
+    public float speed = 20.0f;
+    private float intialSpeed = 20.0f;
     public float speedIncreasePerc = 0.1f;
+    public float bounceSpeedIncrease = 2.5f;
 
-    private bool lastTouchedLeft = true;
+    public bool lastTouchedLeft = true;
 
     public Vector2 startPointLeft;
     public Vector2 startPointRight;
@@ -42,13 +44,14 @@ public class BallController : MonoBehaviour
         // Handle collision with player
         if (collision.gameObject.layer == 6)
         {
+
             speed += speedIncreasePerc;
 
             direction.x = (direction.x > 0.0f ? -1.0f : 1.0f);
 
             ContactPoint2D contactPoint = collision.GetContact(0);
 
-            direction.y = contactPoint.point.y - collision.gameObject.transform.position.y ;
+            direction.y = contactPoint.point.y - collision.gameObject.transform.position.y;
             Debug.Log("New Vertical: " + direction.y);
 
             direction = direction.normalized;
@@ -81,12 +84,6 @@ public class BallController : MonoBehaviour
         else
             gameObject.transform.position = startPointLeft;
 
-        //reset player positions
-        //Debug.Log("POSITION1: " + playerRight.transform.position);
-        //playerLeft.transform.position = new Vector2(-24, 0);
-        //playerRight.transform.position = new Vector2(24, 0);
-        //Debug.Log("POSITION2: " + playerRight.transform.position);
-
-        speed = 10.0f;
+        speed = intialSpeed;
     }
 }

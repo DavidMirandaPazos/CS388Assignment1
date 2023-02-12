@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     //Movement vars
     public Vector2 verticalLimits = new Vector2(-13.0f, 13.0f);
-    public float speed = 30.0f;
+    public float speed = 10.0f;
 
     Vector3 tempPosition;
     GameObject ball;
