@@ -6,9 +6,16 @@ public class BallController : MonoBehaviour
 {
     public GameManager gameManager;
     public Rigidbody2D rbRef;
+    public GameObject  playerLeft;
+    public GameObject  playerRight;
 
     public float speed = 10.0f;
     public float speedIncreasePerc = 0.1f;
+
+    private bool lastTouchedLeft = true;
+
+    public Vector2 startPointLeft;
+    public Vector2 startPointRight;
 
     public Vector2 direction;
 
@@ -16,7 +23,12 @@ public class BallController : MonoBehaviour
     void Start()
     {
         rbRef = gameObject.GetComponent<Rigidbody2D>();
-        direction = new Vector2(Random.Range(-1.0f, 1.0f), 0).normalized;
+        float direction_x = Random.Range(-1.0f, 1.0f);
+        if(direction_x <= 0)
+            gameObject.transform.position = startPointLeft;
+        else
+            gameObject.transform.position = startPointRight;
+        direction = new Vector2(direction_x, 0).normalized;
     }
 
     // Update is called once per frame
@@ -41,13 +53,12 @@ public class BallController : MonoBehaviour
 
             direction = direction.normalized;
             rbRef.velocity = direction * speed;
+
+            lastTouchedLeft = collision.gameObject.GetComponent<AndroidPlayerController>().isLeft;
         }
         else if (collision.gameObject.layer == 7)
         {
-            if (direction.x > 0.0f)
-                gameManager.AddScore(true);
-            else
-                gameManager.AddScore(false);
+            gameManager.AddScore(lastTouchedLeft);
 
             // Do something about point
             ResetPosition();
@@ -60,13 +71,22 @@ public class BallController : MonoBehaviour
         }
     }
 
-
     private void ResetPosition()
     {
         direction.y = 0.0f;
         direction.Normalize();
 
-        gameObject.transform.position = Vector2.zero;
+        if(lastTouchedLeft)
+            gameObject.transform.position = startPointRight;
+        else
+            gameObject.transform.position = startPointLeft;
+
+        //reset player positions
+        //Debug.Log("POSITION1: " + playerRight.transform.position);
+        //playerLeft.transform.position = new Vector2(-24, 0);
+        //playerRight.transform.position = new Vector2(24, 0);
+        //Debug.Log("POSITION2: " + playerRight.transform.position);
+
         speed = 10.0f;
     }
 }
