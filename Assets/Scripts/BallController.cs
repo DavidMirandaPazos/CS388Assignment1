@@ -44,10 +44,14 @@ public class BallController : MonoBehaviour
         // Handle collision with player
         if (collision.gameObject.layer == 6)
         {
+            speed += bounceSpeedIncrease;
 
-            speed += speedIncreasePerc;
+            if (direction.x > 0.0f)
+                lastTouchedLeft = false;
+            else
+                lastTouchedLeft = true;
 
-            direction.x = (direction.x > 0.0f ? -1.0f : 1.0f);
+           direction.x = (direction.x > 0.0f ? -1.0f : 1.0f);
 
             ContactPoint2D contactPoint = collision.GetContact(0);
 
@@ -56,8 +60,6 @@ public class BallController : MonoBehaviour
 
             direction = direction.normalized;
             rbRef.velocity = direction * speed;
-
-            lastTouchedLeft = collision.gameObject.GetComponent<AndroidPlayerController>().isLeft;
         }
         else if (collision.gameObject.layer == 7)
         {
@@ -69,6 +71,7 @@ public class BallController : MonoBehaviour
         // Collided with wall
         else
         {
+            speed += bounceSpeedIncrease;
             direction.y *= -1.0f;
             rbRef.velocity = rbRef.velocity.normalized * speed;
         }

@@ -360,6 +360,8 @@ MonoBehaviour:
   downKey: 115
   verticalLimits: {x: -13, y: 13}
   speed: 50
+  ball: {fileID: 1900297589}
+  isLeft: 1
 --- !u!61 &244787103
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -400,7 +402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalLimits: {x: -13, y: 13}
   speed: 50
-  initialPos: {x: -24, y: 0}
   ball: {fileID: 1900297589}
   isLeft: 1
 --- !u!1 &367205601
@@ -803,6 +804,8 @@ MonoBehaviour:
   downKey: 274
   verticalLimits: {x: -13, y: 13}
   speed: 50
+  ball: {fileID: 1900297589}
+  isLeft: 0
 --- !u!61 &533433567
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -842,8 +845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalLimits: {x: -13, y: 13}
-  speed: 10
-  initialPos: {x: 24, y: 0}
+  speed: 50
   ball: {fileID: 1900297589}
   isLeft: 0
 --- !u!1 &750988036
@@ -2142,6 +2144,8 @@ MonoBehaviour:
   playerRight: {fileID: 533433562}
   speed: 15
   speedIncreasePerc: 0.1
+  bounceSpeedIncrease: 2.5
+  lastTouchedLeft: 1
   startPointLeft: {x: -10, y: 0}
   startPointRight: {x: 10, y: 0}
   direction: {x: 0, y: 0}

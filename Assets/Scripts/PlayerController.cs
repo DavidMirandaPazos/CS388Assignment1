@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
 
     Vector3 tempPosition;
-    GameObject ball;
+    public GameObject ball;
+
+    public bool isLeft;
+    int versusMode;
 
 #if !UNITY_ANDROID
 
@@ -21,13 +24,17 @@ public class PlayerController : MonoBehaviour
     // This should be called Initialize
     void Start()
     {
+        versusMode = PlayerPrefs.GetInt("isVersusMode");
         tempPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckMovement();
+        if (!isLeft && versusMode == 0)
+            UpdateAI();
+        else
+            CheckMovement();
     }
 
     private void LateUpdate() // prevent fails, safe checks
@@ -52,6 +59,8 @@ public class PlayerController : MonoBehaviour
     }
     void UpdateAI()
     {
+        float direction = ball.transform.position.y - transform.position.y;
+
         tempPosition.y = ball.transform.position.y;
     }
 #endif

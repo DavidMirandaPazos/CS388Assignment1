@@ -28,9 +28,10 @@ public class AndroidPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckMovement();
         if (!isLeft && versusMode == 0)
             UpdateAI();
+        else
+            CheckMovement();
     }
 
     private void LateUpdate() // prevent fails, safe checks

@@ -32,7 +32,7 @@ public class GoalController : MonoBehaviour
             renderer.color = goalColor;
             Debug.Log("Color: " + goalColor);
 
-            gameManager.AddScore(ball.lastTouchedLeft);
+            //gameManager.AddScore(ball.lastTouchedLeft);
         }
         else
         {
