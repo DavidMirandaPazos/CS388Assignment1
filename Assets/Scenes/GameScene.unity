@@ -400,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalLimits: {x: -13, y: 13}
   speed: 50
+  initialPos: {x: -24, y: 0}
   ball: {fileID: 1900297589}
   isLeft: 1
 --- !u!1 &367205601
@@ -842,6 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalLimits: {x: -13, y: 13}
   speed: 10
+  initialPos: {x: 24, y: 0}
   ball: {fileID: 1900297589}
   isLeft: 0
 --- !u!1 &750988036
@@ -2136,6 +2138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 183474855}
   rbRef: {fileID: 1900297591}
-  speed: 10
+  playerLeft: {fileID: 244787099}
+  playerRight: {fileID: 533433562}
+  speed: 15
   speedIncreasePerc: 0.1
+  startPointLeft: {x: -10, y: 0}
+  startPointRight: {x: 10, y: 0}
   direction: {x: 0, y: 0}

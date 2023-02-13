@@ -6,9 +6,18 @@ public class BallController : MonoBehaviour
 {
     public GameManager gameManager;
     public Rigidbody2D rbRef;
+    public GameObject  playerLeft;
+    public GameObject  playerRight;
 
-    public float speed = 10.0f;
+    public float speed = 20.0f;
+    private float intialSpeed = 20.0f;
     public float speedIncreasePerc = 0.1f;
+    public float bounceSpeedIncrease = 2.5f;
+
+    public bool lastTouchedLeft = true;
+
+    public Vector2 startPointLeft;
+    public Vector2 startPointRight;
 
     public Vector2 direction;
 
@@ -16,7 +25,12 @@ public class BallController : MonoBehaviour
     void Start()
     {
         rbRef = gameObject.GetComponent<Rigidbody2D>();
-        direction = new Vector2(Random.Range(-1.0f, 1.0f), 0).normalized;
+        float direction_x = Random.Range(-1.0f, 1.0f);
+        if(direction_x <= 0)
+            gameObject.transform.position = startPointLeft;
+        else
+            gameObject.transform.position = startPointRight;
+        direction = new Vector2(direction_x, 0).normalized;
     }
 
     // Update is called once per frame
@@ -30,24 +44,24 @@ public class BallController : MonoBehaviour
         // Handle collision with player
         if (collision.gameObject.layer == 6)
         {
+
             speed += speedIncreasePerc;
 
             direction.x = (direction.x > 0.0f ? -1.0f : 1.0f);
 
             ContactPoint2D contactPoint = collision.GetContact(0);
 
-            direction.y = contactPoint.point.y - collision.gameObject.transform.position.y ;
+            direction.y = contactPoint.point.y - collision.gameObject.transform.position.y;
             Debug.Log("New Vertical: " + direction.y);
 
             direction = direction.normalized;
             rbRef.velocity = direction * speed;
+
+            lastTouchedLeft = collision.gameObject.GetComponent<AndroidPlayerController>().isLeft;
         }
         else if (collision.gameObject.layer == 7)
         {
-            if (direction.x > 0.0f)
-                gameManager.AddScore(true);
-            else
-                gameManager.AddScore(false);
+            gameManager.AddScore(lastTouchedLeft);
 
             // Do something about point
             ResetPosition();
@@ -60,13 +74,16 @@ public class BallController : MonoBehaviour
         }
     }
 
-
     private void ResetPosition()
     {
         direction.y = 0.0f;
         direction.Normalize();
 
-        gameObject.transform.position = Vector2.zero;
-        speed = 10.0f;
+        if(lastTouchedLeft)
+            gameObject.transform.position = startPointRight;
+        else
+            gameObject.transform.position = startPointLeft;
+
+        speed = intialSpeed;
     }
 }

@@ -16,14 +16,63 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        int map = Random.Range(0, 2);
 
-        for(int i = 0; i < maxScore; i++)
+        if(map == 0)
         {
-            GameObject obj =Instantiate(prefab, new Vector3(radious * Mathf.Cos(2.0f * i * Mathf.PI/ maxScore), radious * Mathf.Sin(2.0f * i * Mathf.PI / maxScore), 0.0f), Quaternion.identity);
-            GoalController goalRef = obj.GetComponent<GoalController>();
-            goalRef.gameManager = this;
-            goalRef.ball = ball;
+            instantiateScorePoint(new Vector3(0.0f, 12.0f, 0.0f));
+            instantiateScorePoint(new Vector3(0.0f, 6.0f, 0.0f));
+            instantiateScorePoint(new Vector3(3.0f, 9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-3.0f, 9.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(0.0f, -12.0f, 0.0f));
+            instantiateScorePoint(new Vector3(0.0f, -6.0f, 0.0f));
+            instantiateScorePoint(new Vector3(3.0f, -9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-3.0f, -9.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(11.0f, 4.0f, 0.0f));
+            instantiateScorePoint(new Vector3(11.0f, -4.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-11.0f, 4.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-11.0f, -4.0f, 0.0f));
         }
+        else if (map == 1)
+        {
+            instantiateScorePoint(new Vector3(0.0f, 12.0f, 0.0f));
+            instantiateScorePoint(new Vector3(9.0f, 9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-9.0f, 9.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(0.0f, 3.0f, 0.0f));
+            instantiateScorePoint(new Vector3(0.0f, -3.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(0.0f, -12.0f, 0.0f));
+            instantiateScorePoint(new Vector3(9.0f, -9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-9.0f, -9.0f, 0.0f));
+        }
+        else if (map == 2)
+        {
+            instantiateScorePoint(new Vector3(16.0f, 9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(16.0f, -9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-16.0f, 9.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-16.0f, -9.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(12.0f, 5.0f, 0.0f));
+            instantiateScorePoint(new Vector3(12.0f, -5.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-12.0f, 5.0f, 0.0f));
+            instantiateScorePoint(new Vector3(-12.0f, -5.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(0.0f, 11.0f, 0.0f));
+            instantiateScorePoint(new Vector3(0.0f, -11.0f, 0.0f));
+
+            instantiateScorePoint(new Vector3(0.0f, 0.0f, 0.0f));
+        }
+    }
+
+    private void instantiateScorePoint(Vector3 position)
+    {
+        GameObject obj = Instantiate(prefab, position, Quaternion.identity);
+        GoalController goalRef = obj.GetComponent<GoalController>();
+        goalRef.gameManager = this;
+        goalRef.ball = ball;
     }
 
 

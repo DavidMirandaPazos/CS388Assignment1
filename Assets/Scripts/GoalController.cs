@@ -9,12 +9,14 @@ public class GoalController : MonoBehaviour
     public BallController ball;
     public GameManager gameManager;
     public Color goalColor;
+    private Color initialColor;
     bool isGoaled;
 
     // Start is called before the first frame update
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
+        initialColor = renderer.color;
     }
 
     // Update is called once per frame
@@ -30,15 +32,16 @@ public class GoalController : MonoBehaviour
             renderer.color = goalColor;
             Debug.Log("Color: " + goalColor);
 
-            if (ball.direction.x < 0.0f)
-                gameManager.AddScore(false);
-            else
-                gameManager.AddScore(true);
+            gameManager.AddScore(ball.lastTouchedLeft);
         }
         else
         {
-            ball.direction.x = -ball.direction.x;
-            ball.rbRef.velocity = ball.direction * ball.speed;
+            Vector2 direction = new Vector2(ball.transform.position.x - gameObject.transform.position.x, ball.transform.position.y - gameObject.transform.position.y);
+            ball.direction = direction.normalized;
+            ball.speed += ball.bounceSpeedIncrease;
+            ball.rbRef.velocity = direction * ball.speed;
+            renderer.color = initialColor;
+            isGoaled = false;
         }
     }
 

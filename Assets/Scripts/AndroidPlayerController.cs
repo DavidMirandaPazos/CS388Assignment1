@@ -6,7 +6,7 @@ public class AndroidPlayerController : MonoBehaviour
 {
     //Movement vars
     public Vector2 verticalLimits = new Vector2(-13.0f, 13.0f);
-    public float speed = 10.0f;
+    public float speed = 8.0f;
 
     public GameObject ball;
 
