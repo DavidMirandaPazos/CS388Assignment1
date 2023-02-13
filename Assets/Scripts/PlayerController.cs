@@ -59,9 +59,16 @@ public class PlayerController : MonoBehaviour
     }
     void UpdateAI()
     {
-        float direction = ball.transform.position.y - transform.position.y;
+        float differenece = Mathf.Abs(ball.transform.position.y - transform.position.y);
+        if (differenece >= 1.5f )
+        {
+            float direction = -1.0f;
 
-        tempPosition.y = ball.transform.position.y;
+            if (ball.transform.position.y > transform.position.y)
+                direction = 1.0f;
+
+            tempPosition.y += direction * speed / 2 * Time.deltaTime;
+        }
     }
 #endif
 }

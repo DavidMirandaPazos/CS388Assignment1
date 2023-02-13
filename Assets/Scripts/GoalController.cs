@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoalController : MonoBehaviour
 {
-    SpriteRenderer renderer;
+    SpriteRenderer spriteRenderer;
 
     public BallController ball;
     public GameManager gameManager;
@@ -15,8 +15,8 @@ public class GoalController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        renderer = gameObject.GetComponent<SpriteRenderer>();
-        initialColor = renderer.color;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        initialColor = spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -29,9 +29,7 @@ public class GoalController : MonoBehaviour
         if(!isGoaled)
         {
             isGoaled = true;
-            renderer.color = goalColor;
-            Debug.Log("Color: " + goalColor);
-
+            spriteRenderer.color = goalColor;
             //gameManager.AddScore(ball.lastTouchedLeft);
         }
         else
@@ -40,7 +38,7 @@ public class GoalController : MonoBehaviour
             ball.direction = direction.normalized;
             ball.speed += ball.bounceSpeedIncrease;
             ball.rbRef.velocity = direction * ball.speed;
-            renderer.color = initialColor;
+            spriteRenderer.color = initialColor;
             isGoaled = false;
         }
     }

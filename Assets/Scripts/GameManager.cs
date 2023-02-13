@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Fade fader;
     public BallController ball;
     public UnityEngine.UI.Text score1;
     public UnityEngine.UI.Text score2;
@@ -11,11 +12,12 @@ public class GameManager : MonoBehaviour
 
     public float radious = 5.0f;
 
-    public int maxScore = 10;
+    public int maxScore = 5;
     Vector2Int scores = Vector2Int.zero;
 
     private void Start()
     {
+        ball.gameObject.SetActive(false);
         int map = Random.Range(0, 2);
 
         if(map == 0)
@@ -79,6 +81,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (fader.finishedFadeIn)
+            ball.gameObject.SetActive(true);
     }
 
     public void AddScore(bool isPlayer1)
@@ -102,6 +106,6 @@ public class GameManager : MonoBehaviour
 
     void PlayerWon(bool isPlayer1)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        fader.FadeOut(0);
     }
 }

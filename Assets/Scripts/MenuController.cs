@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
+    public Fade fader;
+
     public void SelectSinglePlayer()
     {
         PlayerPrefs.SetInt("isVersusMode", 0);
-        LoadNextScreen();
+        fader.FadeOut(2);
     }
     public void SelectMultiPlayer()
     {
         PlayerPrefs.SetInt("isVersusMode", 1);
-        LoadNextScreen();
-    }
-    void LoadNextScreen()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        fader.FadeOut(2);
     }
     public void Quit()
     {

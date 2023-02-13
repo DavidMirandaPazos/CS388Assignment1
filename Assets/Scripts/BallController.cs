@@ -45,6 +45,7 @@ public class BallController : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             speed += bounceSpeedIncrease;
+            speed = Mathf.Clamp(speed, 0.0f, 50.0f);
 
             if (direction.x > 0.0f)
                 lastTouchedLeft = false;
@@ -56,7 +57,6 @@ public class BallController : MonoBehaviour
             ContactPoint2D contactPoint = collision.GetContact(0);
 
             direction.y = contactPoint.point.y - collision.gameObject.transform.position.y;
-            Debug.Log("New Vertical: " + direction.y);
 
             direction = direction.normalized;
             rbRef.velocity = direction * speed;
@@ -72,6 +72,7 @@ public class BallController : MonoBehaviour
         else
         {
             speed += bounceSpeedIncrease;
+            speed = Mathf.Clamp(speed, 0.0f, 50.0f);
             direction.y *= -1.0f;
             rbRef.velocity = rbRef.velocity.normalized * speed;
         }
@@ -83,9 +84,9 @@ public class BallController : MonoBehaviour
         direction.Normalize();
 
         if(lastTouchedLeft)
-            gameObject.transform.position = startPointRight;
-        else
             gameObject.transform.position = startPointLeft;
+        else
+            gameObject.transform.position = startPointRight;
 
         speed = intialSpeed;
     }
