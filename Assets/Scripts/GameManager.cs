@@ -106,6 +106,6 @@ public class GameManager : MonoBehaviour
 
     void PlayerWon(bool isPlayer1)
     {
-        fader.FadeOut(0);
+        fader.FadeOut(1);
     }
 }
